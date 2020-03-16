@@ -19,6 +19,7 @@ It is possible to use any ESP8266 board, but I would recommend:
 * 3x buttons
 * proto board
 * OLED display 128x64px, either SSD1306 or SH1106
+
 Connection between the components:
 ![Scheme](/images/ESM_scheme.png)
 
@@ -35,12 +36,6 @@ Libraries:
 * [arduinoWebSockets 2.1.1](https://github.com/Links2004/arduinoWebSockets)
 * [PubSubClient 2.7](https://github.com/knolleary/pubsubclient)
 
-## Sending IR codes with a button
-You can use a button to send selected IR codes, single click and double click is supported.
-If you use Wemos D1 Mini with [IR shield](https://wiki.wemos.cc/products:d1_mini_shields:ir_controller_shield), use these steps:
-1. Solder a button on the IR shield between pins D3 and GND.
-1. Since D3 is by default used for IR LEDs, you must cut a trace on the back of the IR shield and join two solder pads - I have used pin D2 for IR LEDs.
-
 ## Setup
 1. Download content of this repository to your Arduino folder (probably `~\Documents\Arduino\ESP8266_Serial_Monitor`, folder should contain one `*.ino` file and `data` folder) and open `ESP8266_Serial_Monitor.ino`.
 1. Set pins for buttons - `#define PIN_BUTTON_LEFT 14` ...
@@ -55,19 +50,19 @@ If you use Wemos D1 Mini with [IR shield](https://wiki.wemos.cc/products:d1_mini
    1. Before stating upload to SPIFFS make sure, that Serial monitor window is not opened, otherwise the upload will fail.
 
 ## Web page interface
-If connectedt to a wifi network, then the ESP8266 will provide web page interface on the IP address of the device. On this page you can:
+If connected to a wifi network, then the ESP8266 will provide web page interface on the IP address of the device. On this page you can:
 * view incoming messages over the serial interface
 * set baud rate
-* write messages that are then written the serial interface
+* write messages that are then written to the serial interface
 Communication between the page and the webserver is done via Web Sockets, so it is really fast and without reloads.
 
 ## MQTT API
-If you enable MQTT API, then the ESP8266 will wait for commands in topic:
+If you enable MQTT API, then the ESP8266 will wait for commands in the topics:
 * MQTT_TOPIC/cmd/bdr
-  * payload = desired baudrate, for examle 9600, 115200
+  * payload = desired baud rate, for example 9600, 115200, ...
 * MQTT_TOPIC/cmd/inp
   * payload = message that is sent over the serial interface
-And in the topic *MQTT_TOPIC/rspn* you will receive incomming serial communication and notification about baud rate changes. All messages are in JSON format.
+And in the topic *MQTT_TOPIC/rspn* you will receive incomming serial communication and notifications about baud rate changes. All messages are in the JSON format.
 
 ## STL for case
 In folder `stl` you will find `*.stl` files for your 3D printer, so you can print nice case for Wemos D1 Mini soldered on the proto board with the buttons and display.
