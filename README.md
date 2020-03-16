@@ -1,11 +1,12 @@
 # ESP8266 Serial Monitor
-This project is developed for ESP8266 boards and it functions as a **serial interface monitor**. Once you connect RX and TX lines (crossed) from this project to any device, that provides data over serial interface (**3.3V** for ESP8266 only!), you will see the ASCII communication over the lines. But that is not all:
+This project is developed for ESP8266 boards and it functions as a **serial interface monitor**. Once you connect RX and TX lines (crossed) from this project to any device, that provides ASCII data over serial interface (**3.3V** for ESP8266 only!), you will see the  communication over the lines. But that is not all:
 ### Features
 * display incoming ASCII serial communication on OLED
 * write messages and sent them over the serial interface
 * change baud rate on the fly
 * when connected to a wifi network, web page is provided, that shows the serial communication, enables writing new messages and changing the baud rate
 * when connected to a wifi network, the project can connect to a MQTT broker and send all serial communication in the JSON format to the broker. MQTT interface also provides the posibility to change the baud rate and send messages
+
 Project can be used in home automation systems for devices, that provide serial interface and cannot connect to the wifi.
 **WIFI networks is not required**.
 
